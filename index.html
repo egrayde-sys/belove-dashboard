@@ -1741,7 +1741,11 @@ let acciones = [];
     }
 
     // Guardar en Sheets
-    const saveRes = await fetch(APPS_SCRIPT+'?action=guardarPlan&acciones='+encodeURIComponent(JSON.stringify(acciones)));
+    const saveRes = await fetch(APPS_SCRIPT, {
+  method: 'POST',
+  headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+  body: 'action=guardarPlan&acciones='+encodeURIComponent(JSON.stringify(acciones))
+});
     const saveData = await saveRes.json();
     const fecha = new Date().toLocaleString('es-CL',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
     last.textContent = 'Ultimo analisis: '+fecha+' · '+acciones.length+' acciones generadas';
