@@ -130,6 +130,7 @@ tbody tr:hover td{background:var(--surface2);}
   <div class="nav-item" onclick="showPage('boletas',this)"><span class="nav-icon">🧾</span>Boletas<span class="nav-badge" id="nav-badge" style="display:none">0</span></div>
   <div class="sidebar-footer">Actualizado<br><span id="last-update">—</span><br><br>
     <button class="btn btn-sm" onclick="recargarTodo()" style="width:100%">↻ Recargar</button>
+    <button class="hbtn" onclick="window.location.href='/logout'" style="background:#fee2e2;color:#b91c1c;border-color:#fecaca;">⎋ Cerrar sesión</button>
   </div>
 </aside>
 <main class="main">
@@ -245,7 +246,6 @@ tbody tr:hover td{background:var(--surface2);}
     <div class="row">
       <button class="btn btn-sm" onclick="toggleSelAll()" id="btn-selall">Seleccionar todos</button>
       <button class="btn btn-sm" onclick="cargarBoletas()">↻ Actualizar</button>
-      <button class="hbtn" onclick="window.location.href='/logout'" style="background:#fee2e2;color:#b91c1c;border-color:#fecaca;">⎋ Cerrar sesión</button>
     </div>
     <div id="bol-list"><div class="loading"><span class="spinner"></span>Conectando...</div></div>
     <div class="bol-footer">
