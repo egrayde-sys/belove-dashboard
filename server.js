@@ -6,8 +6,8 @@ const crypto = require('crypto');
 
 const PORT = process.env.PORT || 3000;
 const ANTHROPIC_KEY = process.env.ANTHROPIC_KEY || '';
-const DASHBOARD_USER = process.env.DASHBOARD_USER || 'admin';
-const DASHBOARD_PASS = process.env.DASHBOARD_PASS || 'belove2024';
+const DASHBOARD_USER = process.env.DASHBOARD_USER || 'elias';
+const DASHBOARD_PASS = process.env.DASHBOARD_PASS || 'cantinflas892';
 
 // ── SESIONES ───────────────────────────────────────────────
 const sessions = new Map();
