@@ -673,7 +673,7 @@ async function cargarVentas() {
   try {
     const json = await gviz('ventas', 'select C,E,F,G,I,L where D="Pagado" or D="acreditado"');
     vdata = json.table.rows.map(r => ({
-      fecha: String(r.c[0]?.v||'').substring(0,10),
+      fecha: (()=>{const v=String(r.c[0]?.v||'');const m=v.match(/Date\((\d+),(\d+),(\d+)\)/);if(m){return m[1]+'-'+String(parseInt(m[2])+1).padStart(2,'0')+'-'+String(m[3]).padStart(2,'0');}return v.substring(0,10);})(),
 
       medio:  String(r.c[1]?.v||'otro').toLowerCase().trim(),
       region: String(r.c[2]?.v||'Sin región'),
