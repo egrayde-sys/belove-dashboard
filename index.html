@@ -329,8 +329,7 @@ async function cargarDatosClientes() {
   try {
     const json = await gviz('ventas', 'select C,H,I where (D="Pagado" or D="acreditado") and H is not null and H != ""');
     const pedidos = json.table.rows.map(r => ({
-      /*fecha: String(r.c[0]?.v||'').substring(0,7),*/
-        fecha: (()=>{const v=r.c[0]?.v||''; const m=String(v).match(/Date\((\d+),(\d+)/); if(m){const yr=parseInt(m[1]),mo=parseInt(m[2]);return `${yr}-${String(mo+1).padStart(2,'0')}`;} return String(v).substring(0,7);})(),
+      fecha: String(r.c[0]?.v||'').substring(0,7),
       email: String(r.c[1]?.v||'').toLowerCase().trim(),
       total: Number(r.c[2]?.v||0),
     })).filter(r => r.email && r.total > 0 && r.fecha.length === 7);
@@ -674,8 +673,7 @@ async function cargarVentas() {
   try {
     const json = await gviz('ventas', 'select C,E,F,G,I,L where D="Pagado" or D="acreditado"');
     vdata = json.table.rows.map(r => ({
-      /*fecha:  String(r.c[0]?.v||''),*/
-        fecha: (()=>{const v=r.c[0]?.v||''; const m=String(v).match(/Date\((\d+),(\d+),(\d+)\)/); if(m){const yr=parseInt(m[1]),mo=parseInt(m[2]),dy=parseInt(m[3]);return `${yr}-${String(mo+1).padStart(2,'0')}-${String(dy).padStart(2,'0')}`;} return String(v).substring(0,10);})(),
+      fecha: String(r.c[0]?.v||'').substring(0,10),
 
       medio:  String(r.c[1]?.v||'otro').toLowerCase().trim(),
       region: String(r.c[2]?.v||'Sin región'),
