@@ -132,6 +132,7 @@ const server = http.createServer((req, res) => {
     req.on('data', chunk => { body += chunk; });
     req.on('end', () => {
       const { user, pass } = parseFormBody(body);
+      console.log('Login intento - user:', user, '| pass:', pass ? '***' : 'VACIA', '| match:', user === DASHBOARD_USER && pass === DASHBOARD_PASS);
       if (user === DASHBOARD_USER && pass === DASHBOARD_PASS) {
         const token = crearSesion();
         res.writeHead(302, {
