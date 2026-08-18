@@ -87,8 +87,12 @@ const loginErrorHTML = loginHTML.replace('display:none', 'display:block');
 function parseFormBody(body) {
   const params = {};
   body.split('&').forEach(pair => {
-    const [k, v] = pair.split('=');
-    if (k) params[decodeURIComponent(k)] = decodeURIComponent(v || '');
+    const idx = pair.indexOf('=');
+    if (idx > 0) {
+      const k = decodeURIComponent(pair.substring(0, idx).replace(/\+/g, ' '));
+      const v = decodeURIComponent(pair.substring(idx + 1).replace(/\+/g, ' '));
+      params[k] = v;
+    }
   });
   return params;
 }
